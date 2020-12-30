@@ -72,4 +72,21 @@
 
 > $ `sudo cat` /var/lib/docker/volumes/603f90027eaf66e6b7cc853e65f63346f15dabb834fa2aaadf771e236a7f28d1/_data/simple-volume
 > Simple Volume
-> 
+
+## Mac OS
+*macOS* is **NOT** `a native host of the Docker engine`,  
+which is why the Docker engine  
+runs through `a Linux virtual machine (VM).`  
+The path specified in a Docker volume  
+is `a path on the virtual machine’s filesystem`.  
+Acces can be gained for example  
+by setting this alias in the shell's configuration file:  
+
+> `alias dvmc='docker run -it --rm --privileged --pid=host alpine:edge nsenter -t 1 -m -u -n -i sh`
+
+Once the `docker run ...` command has been run   
+access can be gained to the docker managed data  
+by executing the alias:
+
+> $ `dvmc`
+
