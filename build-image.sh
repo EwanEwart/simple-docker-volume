@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 let docker_managed=0
 
