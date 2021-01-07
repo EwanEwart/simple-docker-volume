@@ -1,7 +1,12 @@
 #!/bin/bash
 
 action_to_take=$1
+
 let docker_managed_volume=1
+if [[ $# == 2 ]];then
+    let docker_managed_volume=$2
+fi
+echo "> docker volume mode: $docker_managed_volume"
 
 # Actions
 prune () {
@@ -94,14 +99,11 @@ case "$action_to_take" in
 "view")
     view
     ;;
-"view")
-    view
-    ;;
 "dvmc")
     dvmc
     ;;
 *)
-    echo -e "\n> Usage: $0 prune | build | run | view | dvmc  docker_managed_volume=1 [ keir ]   \n"
+    echo -e "\n> Usage: $0 prune | build | run | view | dvmc   [ docker_managed_volume=1 ⋴ {0,1} ]   [ keir ]   \n"
     ;;
 esac
 
