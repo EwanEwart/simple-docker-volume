@@ -97,11 +97,11 @@ case "$action_to_take" in
 "view")
     view
     ;;
-"dmvc")
-    dmvc
+"dvmc")
+    dvmc
     ;;
 *)
-    echo -e "\n> Usage: $0 prune | build | run | view   docker_managed_volume=1 [ keir ]   \n"
+    echo -e "\n> Usage: $0 prune | build | run | view | dvmc  docker_managed_volume=1 [ keir ]   \n"
     ;;
 esac
 
