@@ -2,6 +2,7 @@
 
 action_to_take=$1
 
+# Set docker managed volume as default.
 let docker_managed_volume=1
 if [[ $# == 2 ]];then
     let docker_managed_volume=$2
@@ -38,7 +39,7 @@ build () {
     fi
     docker build --no-cache  -t "simple-volume-image" .
 }
-build_keir () {
+build_on_keir () {
     # compile on another server
     export DOCKER_HOST=ssh://keir@192.168.188.222
     echo "> DOCKER_HOST=$DOCKER_HOST"
@@ -80,12 +81,12 @@ dvmc () { # enter macOS docker VM console
 }
 
 if [[ $2 == "keir" ]]; then
-    build_keir
+    build_on_keir
 fi
 
 case "$action_to_take" in
 "keir")
-    build_keir
+    build_on_keir
     ;;
 "prune")
     prune
