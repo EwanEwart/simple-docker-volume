@@ -70,6 +70,9 @@ run () {
             # --rm \
     fi
 }
+dvmc () { # enter macOS docker VM console
+    docker run -it --rm --privileged --pid=host alpine:edge nsenter -t 1 -m -u -n -i sh
+}
 
 if [[ $2 == "keir" ]]; then
     build_keir
@@ -91,8 +94,11 @@ case "$action_to_take" in
 "view")
     view
     ;;
-"dmv")
+"view")
     view
+    ;;
+"dmvc")
+    dmvc
     ;;
 *)
     echo -e "\n> Usage: $0 prune | build | run | view   docker_managed_volume=1 [ keir ]   \n"
